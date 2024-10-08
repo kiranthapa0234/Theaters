@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<form class="d-flex mb-5 mt-3" role="search" action=''method="POST">
+    {% csrf_token %}
+    <input class="form-control me-2" name="search" type="search" placeholder="Search" value='{{search}}' aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+{% for n in movies %}
+<table style="width:100%;">
+    <div class="container card">
+    <th >
+        <div class="title m-3"><a href='{% url "show" n.pk  %}' style="text-decoration: none; color:white;" >{{ n.title }}</a></div>
+    </th>
+    <th width='5rem;'>
+        <div class='content'>
+        <img src="{{ n.thumbnail.url }}" class="card-img-top" style="width: 5rem; height:5 rem; object-fit: cover; "  />   
+        </div>
+    </th>
+</div>
+</table>
+<div class='container d-inline-flex'>
+{% comment %} <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;"><iframe src={{ n.video_link }} style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="encrypted-media;"></iframe></div> {% endcomment %}
+</div>
+{% endfor %}
+{% endblock %}

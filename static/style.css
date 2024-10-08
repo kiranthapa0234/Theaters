@@ -1,0 +1,17 @@
+.text{
+    overflow:hidden;
+    margin-left:25%;
+    font-size:3.6rem;
+    font-weight:700;
+    border-right:0.15em solid orange;
+    white-space: nowrap;
+    animation:typing 4s steps(40,end) infinite;
+}
+@keyframes typing {
+    from{
+        width:0;
+    }
+    to{
+        width:60%;
+    }
+}

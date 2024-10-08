@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}
+Theater 
+{% endblock%}
+{% block content %}
+
+  <h1 class="text mt-4">Welcome to movie theater</h1>
+
+<div class="heading mt-5 mb-5">
+    <div class="btn btn-primary">
+        Theater >
+    </div>
+    <div class="service btn btn-dark">
+        Service
+    </div>
+    <button class="toprate  btn btn-secondary" >
+        Top Rated
+    </button>
+</div>
+  <div class="content grid row">
+    {% for n in top %} 
+    <div class="col"> 
+    <div class="card" style="width: 18rem;" >
+     <img src="{{ n.thumbnail.url }}" class="object-fit-cover object-fit-cover"  style="width: 18rem; height:18rem; object-fit: cover; " alt="Image of {{n.title}}" >
+     <div class="card-body">
+       <h5 class="card-title"><a href="{% url 'show' n.id %}" style="text-decoration: none; color:white;" >{{n.title}}</a></h5>
+     </div>
+   </div>
+  </div>
+   {% endfor %}
+</div>
+<div class="heading mt-5 mb-5">
+    <div class="btn btn-primary">
+        Movies >
+    </div>
+  
+</div>
+
+<div class="content row grid">
+   {% for n in movie %}  
+   <div class="col">
+     <div class="card" style="width: 18rem;">
+      <img src="{{ n.thumbnail.url }}" class="card-img-top" style="width: 18rem; height:18rem; object-fit: cover; "  alt="Image of {{n.title}}">
+      <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'show' n.id %}" style="text-decoration: none; color:white;">{{n.title}}</a></h5>
+      </div>
+    </div>
+   </div>
+  {% endfor %}
+</div>
+{% endblock %}
